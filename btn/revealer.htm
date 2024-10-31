@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Add a Revealer</title>
+	<script type="text/javascript" src="js/tiny_mce_popup.js"></script>
+	<script type="text/javascript" src="js/dialog.js"></script>
+	<script type="text/javscript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+<style type="text/css">
+	p { 
+		margin: 5px; 
+		padding: 5px;
+		border-bottom: 1px dashed #bbb;
+	}
+	p.title {
+		font-size: 18px;
+		border-bottom: 0px;
+		color: black;
+	}
+	p.title span {
+		font-size: 12px;
+		color: #07273E;
+	}
+	p.title a {
+		text-decoration: none;
+		border-bottom: 1px dashed #07273E;
+		font-size: 12px;
+		color: #07273E;
+	}
+	p.title a:hover {
+		border-bottom: 0px;
+	}
+	p.subtitle {
+		font-size: 14px;
+		background: white;
+		padding: 5px;
+		font-weight: bold;
+		margin: 10px 0;
+		border-bottom: 3px solid #f0f0f0;
+	}
+	p span.label {
+		width: 120px;
+		display: inline-block;
+	}
+	span.desc {
+		font-size: 11px;
+		padding: 5px 0;
+		color: #777;
+	}
+	input.revealer-but {
+		margin: 10px !important;
+		padding: 10px !important;
+		width: 150px !important;
+		height: auto !important;
+	}
+	.mceActionPanel {
+		text-align: center;
+	}
+	.block { display: block; }
+	.inline { display: inline-block; }
+	.revealer-admin-hidden { display: none; }
+	.revealer-admin-show { display: block; }
+</style>
+</head>
+<body>
+<form onsubmit="RevealerDialog.insert();return false;" action="#">
+	<p class="title">Insert a Revealer</p>
+	<p>Revealer Connector 
+		<input id="connector" name="connector" type="text" class="text" size="30" />
+		<span class="desc block">Give the revealer a name (seperate with dash).</span>	
+	</p>
+	<p>Switch Style (Optional)
+		<input id="style" name="style" type="text" class="text" size="30" />
+	<span class="desc block">Accepts 'underline' or any color (name, hex, rgba).</span>
+	</p>
+	<p>Where to show ?
+	<br />
+	Start From <span class="desc inline">(% from Top)</span> <input id="fold_top" name="fold_top" type="text" class="text" size="3" /> Until <span class="desc inline">(% from Bottom)</span> <input id="fold_bottom" name="fold_bottom" type="text" class="text" size="3" />.
+	<span class="desc block">For example : 0 to 50, would be from top of screen to the middle.</span>
+	</p>
+	<p class="subtitle">Highlight Positioning :</p>
+	<p>Highlight Position : 
+		<select id="position" name="position" onchange="switchSelect(this.value)">
+			<option value="center" selected="selected">Center</option>
+			<option value="left">Left</option>
+			<option value="right">Right</option>
+			<option value="fixed">Fixed</option>
+		</select>
+		<span class="desc inline"> Where to put the highlight ?</span>
+	</p>
+	<div id="fixed_position" class="revealer-admin-hidden">
+		<p>Fixed Positioning : 		
+			<select id="fixed_pos" name="fixed_pos" onchange="switchSelect(this.value)">
+				<option value="top-left">Top Left</option>
+				<option value="top-right">Top Right</option>
+				<option value="bottom-left">Bottom Left</option>
+				<option value="bottom-right">Bottom Right</option>
+				<option value="custom">Custom</option>
+			</select>
+		</p>
+			 <div id="fixed_custom" class="revealer-admin-hidden">
+				<p>Custom Fixed Positioning : 	
+				<br /><br />	
+				Top <input id="fixed_top" name="fixed_top" type="text" class="text" size="3" />, 
+				Right <input id="fixed_right" name="fixed_right" type="text" class="text" size="3" />, 
+				Bottom <input id="fixed_bottom" name="fixed_bottom" type="text" class="text" size="3" />, 
+				Left <input id="fixed_left" name="fixed_left" type="text" class="text" size="3" /> 
+				| <span class="desc inline">(pixels)</span>
+				</p>
+			 </div>
+	</div>
+	<div id="position_move">
+		<p>Move in relation to set position (accepts negative as well) :
+			<br /><br />		
+			Left <input id="left" name="left" type="text" class="text" size="3" /> <span class="desc inline">(pixels)</span> | Top <input id="top" name="top" type="text" class="text" size="3" /><span class="desc inline">(pixels)</span>.
+		</p>
+	</div>
+	<p class="subtitle">Highlight Styling :</p>
+	<p>Highlight Size - 
+		Width <input id="width" name="width" type="text" class="text" size="3" /> <span class="desc inline">(pixels)</span> | Height <input id="height" name="height" type="text" class="text" size="3" /><span class="desc inline">(pixels)</span>.	
+	</p>
+	<p>
+		Background Color <input id="background_color" name="background_color" type="text" class="text" size="10" /> <span class="desc inline">(color/hex/rgba)</span>
+	</p>
+	<p>
+		Highlight Padding <input id="padding" name="padding" type="text" class="text" size="3" /> <span class="desc inline">(pixels)</span>
+		<span class="desc block">The distance between the content and the border.</span>
+	</p>
+	<p>Border Color <input id="border_color" name="border_color" type="text" class="text" size="10" /> <span class="desc inline">(color/hex/rgba)</span> 
+		<br /><br/>
+		Border Width <input id="border_width" name="border_width" type="text" class="text" size="3" /> <span class="desc inline">(pixels)</span> | Border Radius <input id="radius" name="radius" type="text" class="text" size="3" /><span class="desc inline">(pixels)</span>.	
+	</p>
+	<p class="subtitle">Highlight Arrow :</p>
+	<p>Add Arrow ?
+		<select id="add_arrow" name="add_arrow" onchange="switchSelect(this.value)">
+			<option value="no">No</option>
+			<option value="yes">Yes</option>
+		</select>
+	</p>
+		<div id="arrow_section" class="revealer-admin-hidden">
+			<p>Position the Arrow : 
+				<select id="arrow" name="arow">
+					<option value="top">Top</option>
+					<option value="bottom">Bottom</option>
+					<option value="left">Left</option>
+					<option value="right">Right</option>
+					<option value="left-top">Left Top</option>
+					<option value="left-bottom">Left Bottom</option>
+					<option value="right-top">Right Top</option>
+					<option value="right-bottom">Right Bottom</option>
+				</select>
+			</p>
+			<p>Arrow Color :
+				<select id="arrow_color" name="arow_color">
+					<option value="black">Black</option>
+					<option value="white">White</option>
+					<option value="gray">Gray</option>
+				</select>
+			</p>
+		</div>
+	<div class="mceActionPanel">
+		<input class="revealer-but" type="button" id="insert" name="insert" value="Insert Shortcode" onclick="RevealerDialog.insert();" />
+		<input class="revealer-but" type="button" id="cancel" name="cancel" value="Cancel" onclick="tinyMCEPopup.close();" />
+	</div>
+</form>
+<script type="text/javascript">
+	function d(id) { return document.getElementById(id); }
+
+	function switchSelect(val) {
+			if (val == 'no') {
+				h = d('arrow_section');
+				h.className = 'revealer-admin-hidden';
+			}
+			if (val == 'yes') {
+				s = d('arrow_section');
+				s.className = 'revealer-admin-show';
+			}
+			if (val == 'fixed') {
+				s = d('fixed_position');
+				s.className = 'revealer-admin-show';
+				h = d('position_move');
+				h.className = 'revealer-admin-hidden';
+			} 
+			if ((val == 'center') || (val == 'left') || (val == 'right')) {
+				h = d('fixed_position');
+				h.className = 'revealer-admin-hidden';
+				s = d('position_move');
+				s.className = 'revealer-admin-show';
+			}
+			if (val == 'custom') {
+				s = d('fixed_custom');
+				s.className = 'revealer-admin-show';
+			} 
+			if ((val == 'top-left') || (val == 'top-right') || (val == 'bottom-left') || (val == 'bottom-right')) {
+				h = d('fixed_custom');
+				h.className = 'revealer-admin-hidden';
+			}
+
+		}
+</script>
+</body>
+</html>

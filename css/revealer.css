@@ -1,0 +1,246 @@
+/* CSS for Revealer Plugin
+ * Written by Nimrod Tsabari / omniWP
+ * Since Version 0.1b
+ * Release Version 2.0
+ * Written @ 30/09/2012
+ */
+
+.revealer-switch {
+	display: inline;
+	position: relative;
+}
+
+.revealer-div {
+	position: relative;
+	height: 0px;
+	width: 100%;
+	display: inline;
+}
+
+.revealer-box {
+	position: absolute;
+	background: black;
+	padding: 20px;
+	border-radius: 10px;
+	border: 1px solid #888;
+	display: none;
+	box-sizing: border-box;
+	z-index: 9999;
+}
+.revealer-arrow-left-black:after {
+	border-color: transparent black transparent transparent;
+	border-width: 15px;
+	border-style: solid;
+	position: absolute;
+	content: "";
+	left: -30px;
+	top: 40%;
+}
+.revealer-arrow-left-white:after {
+	border-color: transparent white transparent transparent;
+	border-width: 15px;
+	border-style: solid;
+	position: absolute;
+	content: "";
+	left: -30px;
+	top: 40%;
+}
+.revealer-arrow-left-gray:after {
+	border-color: transparent gray transparent transparent;
+	border-width: 15px;
+	border-style: solid;
+	position: absolute;
+	content: "";
+	left: -30px;
+	top: 40%;
+}
+.revealer-arrow-right-black:after {
+	border-color: transparent transparent transparent black;
+	border-width: 15px;
+	border-style: solid;
+	position: absolute;
+	content: "";
+	right: -30px;
+	top: 40%;
+}
+.revealer-arrow-right-white:after {
+	border-color: transparent transparent transparent white;
+	border-width: 15px;
+	border-style: solid;
+	position: absolute;
+	content: "";
+	right: -30px;
+	top: 40%;
+}
+.revealer-arrow-right-gray:after {
+	border-color: transparent transparent transparent gray;
+	border-width: 15px;
+	border-style: solid;
+	position: absolute;
+	content: "";
+	right: -30px;
+	top: 40%;
+}
+
+.revealer-arrow-left-top-black:after {
+	border-color: black black transparent transparent;
+	border-width: 10px;
+	border-style: solid;
+	position: absolute;
+	content: "";
+	left: -20px;
+	top: 8px;	
+}
+.revealer-arrow-left-top-white:after {
+	border-color: white white transparent transparent;
+	border-width: 10px;
+	border-style: solid;
+	position: absolute;
+	content: "";
+	left: -20px;
+	top: 8px;	
+}
+.revealer-arrow-left-top-gray:after {
+	border-color: gray gray transparent transparent;
+	border-width: 10px;
+	border-style: solid;
+	position: absolute;
+	content: "";
+	left: -20px;
+	top: 8px;	
+}
+.revealer-arrow-left-bottom-black:after {
+	border-color: transparent black black transparent;
+	border-width: 10px;
+	border-style: solid;
+	position: absolute;
+	content: "";
+	left: -20px;
+	bottom: 11px;	
+}
+.revealer-arrow-left-bottom-white:after {
+	border-color: transparent white white transparent;
+	border-width: 10px;
+	border-style: solid;
+	position: absolute;
+	content: "";
+	left: -20px;
+	bottom: 11px;	
+}
+.revealer-arrow-left-bottom-gray:after {
+	border-color: transparent gray gray transparent;
+	border-width: 10px;
+	border-style: solid;
+	position: absolute;
+	content: "";
+	left: -20px;
+	bottom: 11px;	
+}
+.revealer-arrow-top-black:after {
+	border-color: transparent transparent black;
+	border-width: 15px;
+	border-style: solid;
+	position: absolute;
+	content: "";
+	left: 50%;
+	top: -30px;
+}
+.revealer-arrow-top-white:after {
+	border-color: transparent transparent white;
+	border-width: 15px;
+	border-style: solid;
+	position: absolute;
+	content: "";
+	left: 50%;
+	top: -30px;
+}
+.revealer-arrow-top-gray:after {
+	border-color: transparent transparent gray;
+	border-width: 15px;
+	border-style: solid;
+	position: absolute;
+	content: "";
+	left: 50%;
+	top: -30px;
+}
+.revealer-arrow-bottom-black:after {
+	border-color: black transparent transparent;
+	border-width: 15px;
+	border-style: solid;
+	position: absolute;
+	content: "";
+	left: 50%;
+	bottom: -30px;
+}
+.revealer-arrow-bottom-white:after {
+	border-color: white transparent transparent;
+	border-width: 15px;
+	border-style: solid;
+	position: absolute;
+	content: "";
+	left: 50%;
+	bottom: -30px;
+}
+.revealer-arrow-bottom-gray:after {
+	border-color: gray transparent transparent;
+	border-width: 15px;
+	border-style: solid;
+	position: absolute;
+	content: "";
+	left: 50%;
+	bottom: -30px;
+}
+.revealer-arrow-right-bottom-black:after {
+	border-color: transparent transparent black black;
+	border-width: 15px;
+	border-style: solid;
+	position: absolute;
+	content: "";
+	right: -30px;
+	bottom: 11px;	
+}
+.revealer-arrow-right-bottom-white:after {
+	border-color: transparent transparent white white;
+	border-width: 15px;
+	border-style: solid;
+	position: absolute;
+	content: "";
+	right: -30px;
+	bottom: 11px;	
+}
+.revealer-arrow-right-bottom-gray:after {
+	border-color: transparent transparent gray gray;
+	border-width: 15px;
+	border-style: solid;
+	position: absolute;
+	content: "";
+	right: -30px;
+	bottom: 11px;	
+}
+.revealer-arrow-right-top-black:after {
+	border-color: black transparent transparent black;
+	border-width: 10px;
+	border-style: solid;
+	position: absolute;
+	content: "";
+	right: -20px;
+	top: 8px;	
+}
+.revealer-arrow-right-top-white:after {
+	border-color: white transparent transparent white;
+	border-width: 10px;
+	border-style: solid;
+	position: absolute;
+	content: "";
+	right: -20px;
+	top: 8px;	
+}
+.revealer-arrow-right-top-gray:after {
+	border-color: gray transparent transparent gray;
+	border-width: 10px;
+	border-style: solid;
+	position: absolute;
+	content: "";
+	right: -20px;
+	top: 8px;	
+}
